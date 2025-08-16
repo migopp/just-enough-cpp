@@ -1,6 +1,6 @@
 # `#include` 
 
-** Contents **
+**Contents**
 
 1. [The Preprocessor](#the-preprocessor)
    - [Define](#eg-define)
