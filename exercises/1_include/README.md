@@ -14,7 +14,7 @@
    - [Circular Include](#circular-include)
      - [Forward Declaration](#forward-declaration)
      - [General Advice](#general-advice)
- 4. [`<>` Versus `""`](#angle-brackets-veruss-quotes)
+ 4. [`<>` Versus `""`](#angle-brackets-versus-quotes)
      
 
 Let's start out nice and simple with the `#include` preprocessor directive.
@@ -493,15 +493,13 @@ g++ main.cpp build/MyLib.o build/MyUtil.o -o build/main && \
 
 This time, it's not the compiler that fails, but the linker:
 
-> duplicate symbol 'jecpp::isEven(int)' in:
->
-> /Users/migopp/Repo/just-enough-cpp/exercises/1_include/multiple_definitions/build/MyUtil.o
->
-> /Users/migopp/Repo/just-enough-cpp/exercises/1_include/multiple_definitions/build/MyLib.o
->
-> ld: 1 duplicate symbols
->
-> clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+``` sh
+duplicate symbol 'jecpp::isEven(int)' in:
+/Users/migopp/Repo/just-enough-cpp/exercises/1_include/multiple_definitions/build/MyUtil.o
+/Users/migopp/Repo/just-enough-cpp/exercises/1_include/multiple_definitions/build/MyLib.o
+ld: 1 duplicate symbols
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+```
 
 So, clearly our `#pragma once` wasn't actually enough.
 This is because we've compiled `MyLib.cpp` and `MyUtil.cpp` _separately_. Then in each translation unit, the compiler followed directions and included `Even.h` only once, but when we went to link the two object files together, they each had their own copy.
@@ -607,19 +605,15 @@ mkdir -p build; g++ main.cpp -o build/main; echo $?
 
 And our suspicions are confirmed:
 
-> In file included from main.cpp:1:
->
-> In file included from ./Edge.h:3:
->
-> ./Vertex.h:10:5: error: unknown type name 'Edge'
->
->    10 |     Edge* edgeList;
->
->       |     ^
->
-> 1 error generated.
->
-> 1
+``` sh
+In file included from main.cpp:1:
+In file included from ./Edge.h:3:
+./Vertex.h:10:5: error: unknown type name 'Edge'
+   10 |     Edge* edgeList;
+      |     ^
+1 error generated.
+1
+```
 
 But, how might we solve this issue?
 `Vertex` and `Edge` seem too coupled. There is no artificial dependency here.
