@@ -1,4 +1,22 @@
-# Include 
+# `#include` 
+
+** Contents **
+
+1. [The Preprocessor](#the-preprocessor)
+   - [Define](#eg-define)
+2. [The Directive](#the-directive)
+3. [Pitfalls](#pitfalls)
+   - [Multiple Inclusion](#multiple-inclusion)
+     - [`#ifndef` Guards](#ifndef-guards)
+     - [`#pragma once`](#pragma-once)
+     - [Always Use Include Protection](#always-use-include-protection)
+   - [Multiple Definitions](#multiple-definitions)
+     - [Header Versus Source Files](#header-versus-source-files)
+   - [Circular Include](#circular-include)
+     - [Forward Declaration](#forward-declaration)
+     - [General Advice](#general-advice)
+ 4. [`<>` Versus `""`](#angle-bracket-veruss-quotes)
+     
 
 Let's start out nice and simple with the `#include` preprocessor directive.
 This is the mechanism used to share interfaces and data over multiple C++ source/header files.
@@ -320,7 +338,7 @@ This is evaluation in what we call depth-first order.
 
 As for solutions, there are a few!
 
-### `#ifndef` guards
+#### `#ifndef` Guards
 
 This is what you are most likely to see across the kernel codebase.
 
@@ -406,7 +424,7 @@ But in the case that you do, some style guides suggest that the full path from t
 Armed with this knowledge, you can now fix `Even.h`.
 Try it out if you like, then you can attempt to recompile with the same command as above. It should work this time and report an exit code of 0.
 
-### `#pragma once`
+#### `#pragma once`
 
 While the include guards are guaranteed to work across every compiler, they are a bit clunky looking (and were clearly some work to explain).
 
@@ -448,7 +466,7 @@ Include guards are technically safer[^6], since they are guaranteed to work acco
 
 `Even.h` can also be fixed this way. Give it a whirl if you like.
 
-### Always Use Include Protection
+#### Always Use Include Protection
 
 The takeaway here is _ALWAYS, ALWAYS, ALWAYS_ use include protection of some sort. It is very important that you do so. You can usually use whichever you like, but you must use at least one.
 
@@ -477,9 +495,13 @@ g++ main.cpp build/MyLib.o build/MyUtil.o -o build/main && \
 This time, it's not the compiler that fails, but the linker:
 
 > duplicate symbol 'jecpp::isEven(int)' in:
+>
 > /Users/migopp/Repo/just-enough-cpp/exercises/1_include/multiple_definitions/build/MyUtil.o
+>
 > /Users/migopp/Repo/just-enough-cpp/exercises/1_include/multiple_definitions/build/MyLib.o
+>
 > ld: 1 duplicate symbols
+>
 > clang++: error: linker command failed with exit code 1 (use -v to see invocation)
 
 So, clearly our `#pragma once` wasn't actually enough.
@@ -491,7 +513,7 @@ _We_ know that it doesn't matter because they are the same function, but there's
 This poses an pretty major issue, because the `MyUtil` and `MyLib` libraries _need_ access to `jecpp::isEven()`.
 They must both include `Even.h`. So it seems like we are doomed.
 
-### Header Versus Source Files
+#### Header Versus Source Files
 
 In fact, you may have heard that header files are for declarations only. You should then create a corresponding definition in a `.cpp` source file. This is the reason why.
 
@@ -587,11 +609,17 @@ mkdir -p build; g++ main.cpp -o build/main; echo $?
 And our suspicions are confirmed:
 
 > In file included from main.cpp:1:
+>
 > In file included from ./Edge.h:3:
+>
 > ./Vertex.h:10:5: error: unknown type name 'Edge'
+>
 >    10 |     Edge* edgeList;
+>
 >       |     ^
+>
 > 1 error generated.
+>
 > 1
 
 But, how might we solve this issue?
@@ -701,7 +729,7 @@ At this point, you may just be thinking that you can't win. Your headers can't b
 
 To be honest, there are still some situations that I've dug myself into with code that I _don't know how to get myself out of cleanly_. Such is life sometimes, I think.
 
-## `<>` Versus `""`
+## Angle Brackets Versus Quotes
 
 I've saved this for last because it's not really the most relevant topic for this class, so its OK if you got bored and stopped reading by now.
 
