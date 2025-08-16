@@ -21,7 +21,7 @@ Let's start out nice and simple with the `#include` preprocessor directive.
 This is the mechanism used to share interfaces and data over multiple C++ source/header files.
 
 > [!WARNING]
-> If you are confident with the mechanics and semantics of the `#include` directive, you can skip this section, though I would recommend taking a cursory glance through the content and convincing yourself that you it all.
+> If you are confident with the mechanics and semantics of the `#include` directive, you can skip this section, though I would recommend taking a cursory glance through the content and convincing yourself that you know it all.
 >
 > Issues with `#include` are quite common in this class. Things get complicated with many source/header files. Particularly the issue of circular dependencies and multiple inclusion. This section will give you a grounding point of understanding, as well as mechanisms to use in debugging these issues.
 
