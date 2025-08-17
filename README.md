@@ -7,6 +7,8 @@ Created as an introduction to C++, the language of choice for Dr. Gheith's CS 43
 > [!NOTE]
 > This is not an exhaustive list of topics for C++ proficiency.
 > This guide is going to be lackluster if you would like to learn practical C++ in a hosted environment, because all programming done in this course is done without access to a standard library.
+>
+> Some background in C is required.
 
 ## Topics
 
