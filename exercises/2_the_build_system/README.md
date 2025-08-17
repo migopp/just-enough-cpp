@@ -7,12 +7,13 @@
    - [`.PHONY`](#phony)
 2. [Variables](#variables)
    - [Special Variables](#special-variables)
-3. [Assignment: `=`, `:=`, `?=`, `+=`](#assignment)
-4. [Build-In Functions](#built-in-functions)
+3. [Assignment: `=`, `:=`, `?=`, `+=`](#assignment----)
+4. [Built-In Functions](#built-in-functions)
 5. [Pattern Matching and Substitution](#pattern-matching-and-substitution)
 6. [Static Pattern Rules](#static-pattern-rules)
 7. [Command Modifiers](#command-modifiers)
 8. [Quick Reference](#quick-reference)
+9. [Exercise](#exercise)
 
 There are tons of build systems for C/C++ projects; for this class, we use the fairly low-level `Makefile`.
 The syntax is not the most intuitive, so this guide is made to give you are more ground-level understanding of how it works, so that you can read Dr. Gheith's `Makefile` with less doubt. It's not a magic formula.
