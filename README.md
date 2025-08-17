@@ -44,4 +44,4 @@ This project is licensed under the terms of the MIT open source license.
 
 ## Contributors
 
-Michael Goppert <goppert@cs.utexas.edu>
+Michael Goppert \<goppert@cs.utexas.edu\>
