@@ -310,7 +310,6 @@ Other command modifiers are specified in [§5](https://www.gnu.org/software/make
 
 If you ever want a quick reference to the commands available in GNU Make, [here](https://www.gnu.org/software/make/manual/html_node/Quick-Reference.html) is a good link that I use.
 
-
 ## Exercise
 
 You have read a lot about `make`. Let's be practical and try to put your skills to the test.
