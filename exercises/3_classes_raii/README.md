@@ -1,6 +1,35 @@
 # Classes and RAII
 
 **Contents**
+1. [C Structs](#c-structs)
+2. [Defining Custom Types in C++](#defining-custom-types-in-c)
+3. [History](#history)
+4. [Member Variables](#member-variables)
+5. [Member Functions](#member-functions)
+6. [Access Modifiers](#access-modifiers)
+7. [RAII, Constructors, and Destructors](#raii-constructors-and-destructors)
+   - [Constructors](#constructors)
+     - [Initializer Lists](#initializer-lists)
+     - [Default Member Initialization](#default-member-initialization)
+   - [Destructors](#destructors)
+8. [Declaration and Definition](#declaration-and-definition)
+9. [`new` and `delete`](#new-and-delete)
+   - [`new[]` and `delete[]`](#new-and-delete-1)
+   - [Mixing `new` and `free`](#mixing-new-and-free)
+   - [Calling `delete`, `delete[]` On Casted Pointer](#calling-delete-delete-on-casted-pointer)
+10. [`this`](#this)
+11. [Copying](#copying)
+    - [Copy Constructor](#copy-constructor)
+    - [Copy Assignment Operator](#copy-assignment-operator)
+12. [Moving](#moving)
+13. [Const Member Functions](#const-member-functions)
+14. [Static Member Functions](#static-member-functions)
+15. [Basic Inheritance](#basic-inheritance)
+    - [Access Modifiers](#access-modifiers-1)
+    - [Virtual Functions](#virtual-functions)
+    - [Final](#final)
+    - [Slicing](#slicing)
+    - [The Classic Virtual Destructor](#the-classic-virtual-destructor)
 
 In C, users can define custom data types through use of the `struct` keyword. Resource management is done manually, usually via the use of `make_X()` and `destroy_X()` functions or some equivalent.
 
