@@ -5,6 +5,10 @@
     - [Copy Constructor](#copy-constructor)
     - [Copy Assignment Operator](#copy-assignment-operator)
 2. [Moving](#moving)
+3. [The Rules](#the-rules)
+   - [The Rule of Three](#the-rule-of-three)
+   - [The Rule of Five](#the-rule-of-five)
+   - [The Rule of Zero](#the-rule-of-zero)
 
 ## Copying
 
@@ -338,3 +342,33 @@ One more quirk to note is that you _cannot_ move from a const object.
 const Foo mainFoo(100000);
 bar(std::move(mainFoo)); // This will still call the copy constructor, since `std::move(mainFoo)` is of type `const Foo&&`, not `Foo&&`.
 ```
+
+## The Rules
+
+There are some common rules in C++ around copying and moving. Here they are in bite-sized form[^1].
+
+### The Rule of Three
+
+> If a class requires a user-defined destructor, a user-defined copy constructor, or a user-defined copy assignment operator, it almost certainly requires all three. 
+
+Define one, define all three. Pretty simple.
+
+### The Rule of Five
+
+> Because the presence of a user-defined (include = default or = delete declared) destructor, copy-constructor, or copy-assignment operator prevents implicit definition of the move constructor and the move assignment operator, any class for which move semantics are desirable, has to declare all five special member functions: 
+
+There are times in which the compiler will generate these special member functions for you. If you define any of the three from above, the compiler can no longer generate a move constructor implicitly. If you want to take advantage of moving, you should define all five.
+
+Also of note:
+
+> Unlike Rule of Three, failing to provide move constructor and move assignment is usually not an error, but a missed optimization opportunity. 
+
+### The Rule of Zero
+
+> Classes that have custom destructors, copy/move constructors or copy/move assignment operators should deal exclusively with ownership (which follows from the Single Responsibility Principle). Other classes should not have custom destructors, copy/move constructors or copy/move assignment operators.
+
+Simply put, if `Foo` has a custom destructor, or any of the copy/move constructors/assignment operators, a class `Bar` (which has a `Foo` as a data member) does _not_ need to have a custom destructor, or any of the copy/move constructors/assignment operators to accommodate the `Foo` member. All of these semantics are already captured within `Foo`.
+
+Simply put, don't write code you don't have to.
+
+[^1]: https://en.cppreference.com/w/cpp/language/rule_of_three.html
