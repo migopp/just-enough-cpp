@@ -14,17 +14,20 @@ Created as an introduction to C++, the language of choice for Dr. Gheith's CS 43
 
 The current list of covered topics include:
 
+> [!WARNING]
+> Sections that are crossed out are currently not complete.
+
 1. The `#include` preprocessor directive,
 2. The `make` build system,
-3. Forgotten keywords,
-4. New keywords,
-5. References,
-6. Namespaces,
+~~3. Forgotten keywords,~~
+~~4. New keywords,~~
+~~5. References,~~
+~~6. Namespaces,~~
 7. Classes and the principle of resource acquisition is initialization (RAII),
 8. Copying and moving,
 9. Casting,
-10. Templates, and
-11. Lambdas and closures
+~~10. Templates, and~~
+~~11. Lambdas and closures~~
 
 ## Instructions
 
