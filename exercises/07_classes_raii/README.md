@@ -345,9 +345,9 @@ private:
 };
 ```
 
-This is, in fact, generally less efficient than using the initializer list. You'll learn more about this as you use C++ more, but before the constructor body is called, all member variables are default-constructed if they are not initialized. Though, in _this_ case, built-in types like `int` don't have constructors, so they just remain uninitialized.
+This is, in fact, generally less efficient than using the initializer list. Before the constructor body is called, all member variables are default-constructed if they are not initialized. Though, in _this_ case, built-in types like `int` don't have constructors, so they just remain uninitialized.
 
-Suppose we had the following class:
+But, suppose we had the following class:
 
 ``` c++
 class MyClass {
