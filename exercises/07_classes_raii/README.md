@@ -563,6 +563,8 @@ From now on, I am going to write everything (including implmentation) in the cla
 
 Look at `Foo.h` and `Foo.cpp`. You will put your understanding to the test by implementing this bare-bones class.
 
+Run `make foo` to check your work. You should see `Pass` if you have done the exercise correctly. You can also check my solution in the `solutions/` directory.
+
 
 ## `new` and `delete`
 
@@ -647,6 +649,8 @@ This is because the wrong destructor for `Binky` will be invoked instead of `Thi
 ### Exercise
 
 Look at `Bar.h` and `Bar.cpp`. Various allocation mishaps are made. Can you figure out how to fix them?
+
+Run `make bar` to check your work. You should see `Pass` if you have done the exercise correctly. You can also check my solution in the `solutions/` directory.
 
 ## `this`
 
@@ -910,6 +914,8 @@ public:
 ### Exercise
 
 Look at `Animal.h` and `Animal.cpp`, and make `Cat` inherit from `Animal` correctly.
+
+Run `make animal` to check your work. You should see `Pass` if you have done the exercise correctly. You can also check my solution in the `solutions/` directory.
 
 [^1]: https://stackoverflow.com/questions/22406278/is-it-safe-to-free-memory-allocated-by-new
 
