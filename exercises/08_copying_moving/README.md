@@ -336,5 +336,5 @@ One more quirk to note is that you _cannot_ move from a const object.
 
 ``` c++
 const Foo mainFoo(100000);
-bar(std::move(mainFoo)); // This will still call the copy constructor, since this is of type `const Foo&&`, not `Foo&&`.
+bar(std::move(mainFoo)); // This will still call the copy constructor, since `std::move(mainFoo)` is of type `const Foo&&`, not `Foo&&`.
 ```
