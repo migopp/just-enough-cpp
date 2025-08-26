@@ -13,10 +13,12 @@
      - [Default Member Initialization](#default-member-initialization)
    - [Destructors](#destructors)
 8. [Declaration and Definition](#declaration-and-definition)
+   - [Exercise](#exercise)
 9. [`new` and `delete`](#new-and-delete)
    - [`new[]` and `delete[]`](#new-and-delete-1)
    - [Mixing `new` and `free`](#mixing-new-and-free)
    - [Calling `delete`, `delete[]` On Casted Pointer](#calling-delete-delete-on-casted-pointer)
+   - [Exercise](#exercise-1)
 10. [`this`](#this)
 11. [Const Member Functions](#const-member-functions)
 12. [Static Member Functions](#static-member-functions)
@@ -26,6 +28,7 @@
     - [Final](#final)
     - [Slicing](#slicing)
     - [The Classic Virtual Destructor](#the-classic-virtual-destructor)
+    - [Exercise](#exercise-2)
 
 In C, users can define custom data types through use of the `struct` keyword. Resource management is done manually, usually via the use of `make_X()` and `destroy_X()` functions or some equivalent.
 
@@ -556,6 +559,11 @@ void Foo::tomfoolery(bool binky)
 
 From now on, I am going to write everything (including implmentation) in the class definition itself, rather that in a separate `.cpp` file as above. This is _bad_, don't do it in real code. I am only doing it for brevity.
 
+### Exercise
+
+Look at `Foo.h` and `Foo.cpp`. You will put your understanding to the test by implementing this bare-bones class.
+
+
 ## `new` and `delete`
 
 I spoke about `new` and `delete` above; they simply handle the process of managing pointers into the heap. In C, you were used to doing this with `malloc` and `free`, but they have the fatal flaw of not initializing/deinitializing the memory that they provide.
@@ -635,6 +643,10 @@ delete b;
 ```
 
 This is because the wrong destructor for `Binky` will be invoked instead of `Thing`.
+
+### Exercise
+
+Look at `Bar.h` and `Bar.cpp`. Various allocation mishaps are made. Can you figure out how to fix them?
 
 ## `this`
 
@@ -894,6 +906,10 @@ public:
     virtual ~Base() { ... }
 };
 ```
+
+### Exercise
+
+Look at `Animal.h` and `Animal.cpp`, and make `Cat` inherit from `Animal` correctly.
 
 [^1]: https://stackoverflow.com/questions/22406278/is-it-safe-to-free-memory-allocated-by-new
 
