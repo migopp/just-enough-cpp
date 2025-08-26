@@ -28,4 +28,4 @@ build:
 clean: build
 	rm -rf build
 
-.PHONY: foo bar animal
+.PHONY: foo bar animal clean
