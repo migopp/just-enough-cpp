@@ -369,6 +369,6 @@ Also of note:
 
 Simply put, if `Foo` has a custom destructor, or any of the copy/move constructors/assignment operators, a class `Bar` (which has a `Foo` as a data member) does _not_ need to have a custom destructor, or any of the copy/move constructors/assignment operators to accommodate the `Foo` member. All of these semantics are already captured within `Foo`.
 
-Simply put, don't write code you don't have to.
+TLDR; don't write code you don't have to.
 
 [^1]: https://en.cppreference.com/w/cpp/language/rule_of_three.html
