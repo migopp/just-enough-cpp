@@ -9,6 +9,7 @@
    - [The Rule of Three](#the-rule-of-three)
    - [The Rule of Five](#the-rule-of-five)
    - [The Rule of Zero](#the-rule-of-zero)
+4. [Exercise](#exercise)
 
 ## Copying
 
@@ -370,5 +371,11 @@ Also of note:
 Simply put, if `Foo` has a custom destructor, or any of the copy/move constructors/assignment operators, a class `Bar` (which has a `Foo` as a data member) does _not_ need to have a custom destructor, or any of the copy/move constructors/assignment operators to accommodate the `Foo` member. All of these semantics are already captured within `Foo`.
 
 TLDR; don't write code you don't have to.
+
+## Exercise
+
+Check out `BadIntVec.h` and `BadIntVec.cpp`. This is _not_ a complete implementation of a vector (dynamic array). For one, it only works for `int` types. Another thing, it doesn't implement any of the correct API. Don't worry about these things.
+
+Implement the special member functions, taking great care to consider proper copy/move semantics. You can run `make biv` to run the code. Feel free to play around with it. You can check my solution in the `solutions/` directory.
 
 [^1]: https://en.cppreference.com/w/cpp/language/rule_of_three.html
