@@ -21,7 +21,7 @@ void Animal::speak() const
 }
 
 Cat::Cat(const char* name, Breed breed)
-    : m_name(name)
+    : Animal(name)
     , m_breed(breed)
 {
 }
